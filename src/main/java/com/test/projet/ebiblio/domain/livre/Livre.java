@@ -1,0 +1,80 @@
+package com.test.projet.ebiblio.domain.livre;
+
+import com.test.projet.ebiblio.domain.Entity;
+import com.test.projet.ebiblio.domain.exception.IncompatibleEtatException;
+
+public class Livre implements Entity  {
+    
+    private String nom;
+    private String auteur;
+    private Reference reference;
+    private Etat etat;
+    
+    
+    public Livre(String nom, String auteur, Reference reference) {
+        super();
+        this.nom = nom;
+        this.auteur = auteur;
+        this.reference = reference;
+        etat = Etat.DISPONIBLE;
+    }
+
+    
+    ////////////////////////////////////////
+    
+    public void louer() {
+        if(etat.equals(Etat.DISPONIBLE)){
+            etat = Etat.LOUE;
+        } else {
+            throw new IncompatibleEtatException("Le livre est en état {}, il doit être en état {} pour être loué", etat, Etat.LOUE);
+        }
+    }
+    
+    public boolean estDisponible() {
+        return etat.equals(Etat.DISPONIBLE);
+    }
+
+    public boolean estLoue() {
+        return etat.equals(Etat.LOUE);
+    }
+    
+    ////////////////////////////////////////
+    
+    /**
+     * @return le nom
+     */
+    public String getNom() {
+        return nom;
+    }
+
+
+
+    /**
+     * @return le auteur
+     */
+    public String getAuteur() {
+        return auteur;
+    }
+
+
+
+    /**
+     * @return le reference
+     */
+    public Reference getReference() {
+        return reference;
+    }
+
+
+   
+
+
+
+
+
+
+    
+    
+    
+    
+}

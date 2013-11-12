@@ -1,0 +1,105 @@
+{"xref": {
+  "whenMade": 1384199584419,
+  "createdBy": "JBehave",
+  "metaFilter": "",
+  "meta": [
+  ],
+  "stories": [
+    {
+      "description": "",
+      "narrative": "In order to avoir un livre\u000aAs a adhérent\u000aI want to louer un livre\u000a",
+      "name": "louer_un_livre.story",
+      "path": "com/test/projet/stories/gerer_livres/louer_livres/louer_un_livre.story",
+      "html": "com.test.projet.stories.gerer_livres.louer_livres.louer_un_livre.html",
+      "meta": "",
+      "scenarios": "Scenario:Louer un livre - cas nominal\u000aEtant donné que mon adhérent 123 existe.\u000aEtant donné que mon livre référence aaa est disponible.\u000aQuand l'adhérent loue le livre.\u000aAlors le livre est loué.\u000aAlors l'adhérent a loué 1 livre.\u000a\u000a\u000a",
+      "passed": true,
+      "started": 1384199583740,
+      "duration": 59
+    },
+    {
+      "description": "",
+      "narrative": "In order to rendre un livre\u000aAs a adhérent\u000aI want to rendre un livre\u000a",
+      "name": "render_un_livre.story",
+      "path": "com/test/projet/stories/gerer_livres/rendre_livres/render_un_livre.story",
+      "html": "com.test.projet.stories.gerer_livres.rendre_livres.render_un_livre.html",
+      "meta": "",
+      "scenarios": "Scenario:Rendre un livre - cas nominal\u000aEtant donné que mon adhérent 123 existe.\u000aEtant donné que mon livre référence aaa est loué.\u000aQuand l'adhérent rend le livre.\u000aAlors le livre est disponible.\u000aAlors l'adhérent a loué 0 livre.\u000a\u000a\u000a",
+      "passed": true,
+      "started": 1384199583801,
+      "duration": 24
+    }
+  ],
+  "stepMatches": [
+    {
+      "type": "WHEN",
+      "annotatedPattern": "l'adhérent loue le livre.",
+      "resolvedPattern": "l'adhérent\\s+loue\\s+le\\s+livre\\.",
+      "usages": [
+        {
+          "story": "com/test/projet/stories/gerer_livres/louer_livres/louer_un_livre.story",
+          "scenario": "Louer un livre - cas nominal",
+          "step": "Quand l'adhérent loue le livre."
+        }
+      ]
+    },
+    {
+      "type": "GIVEN",
+      "annotatedPattern": "mon livre référence %reference est disponible.",
+      "resolvedPattern": "mon\\s+livre\\s+référence\\s+(.*)\\s+est\\s+disponible\\.",
+      "usages": [
+        {
+          "story": "com/test/projet/stories/gerer_livres/louer_livres/louer_un_livre.story",
+          "scenario": "Louer un livre - cas nominal",
+          "step": "Etant donné que mon livre référence aaa est disponible."
+        }
+      ]
+    },
+    {
+      "type": "GIVEN",
+      "annotatedPattern": "mon adhérent %noAdherent existe.",
+      "resolvedPattern": "mon\\s+adhérent\\s+(.*)\\s+existe\\.",
+      "usages": [
+        {
+          "story": "com/test/projet/stories/gerer_livres/rendre_livres/render_un_livre.story",
+          "scenario": "Rendre un livre - cas nominal",
+          "step": "Etant donné que mon adhérent 123 existe."
+        },
+        {
+          "story": "com/test/projet/stories/gerer_livres/louer_livres/louer_un_livre.story",
+          "scenario": "Louer un livre - cas nominal",
+          "step": "Etant donné que mon adhérent 123 existe."
+        }
+      ]
+    },
+    {
+      "type": "THEN",
+      "annotatedPattern": "le livre est loué.",
+      "resolvedPattern": "le\\s+livre\\s+est\\s+loué\\.",
+      "usages": [
+        {
+          "story": "com/test/projet/stories/gerer_livres/louer_livres/louer_un_livre.story",
+          "scenario": "Louer un livre - cas nominal",
+          "step": "Alors le livre est loué."
+        }
+      ]
+    },
+    {
+      "type": "THEN",
+      "annotatedPattern": "l'adhérent a loué %nombre livre.",
+      "resolvedPattern": "l'adhérent\\s+a\\s+loué\\s+(.*)\\s+livre\\.",
+      "usages": [
+        {
+          "story": "com/test/projet/stories/gerer_livres/louer_livres/louer_un_livre.story",
+          "scenario": "Louer un livre - cas nominal",
+          "step": "Alors l'adhérent a loué 1 livre."
+        },
+        {
+          "story": "com/test/projet/stories/gerer_livres/rendre_livres/render_un_livre.story",
+          "scenario": "Rendre un livre - cas nominal",
+          "step": "Alors l'adhérent a loué 0 livre."
+        }
+      ]
+    }
+  ]
+}}

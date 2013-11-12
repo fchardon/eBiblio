@@ -1,0 +1,14 @@
+<story path="com/test/projet/stories/gerer_livres/louer_livres/louer_un_livre.story" title="">
+<narrative keyword="Narrative:">
+  <inOrderTo keyword="In order to">avoir un livre</inOrderTo>
+  <asA keyword="As a">adh&#233;rent</asA>
+  <iWantTo keyword="I want to">louer un livre</iWantTo>
+</narrative>
+<scenario keyword="Scenario:" title="Louer un livre - cas nominal">
+<step outcome="successful">Etant donn&#233; que mon adh&#233;rent <parameter>123</parameter> existe.</step>
+<step outcome="successful">Etant donn&#233; que mon livre r&#233;f&#233;rence <parameter>aaa</parameter> est disponible.</step>
+<step outcome="successful">Quand l&apos;adh&#233;rent loue le livre.</step>
+<step outcome="successful">Alors le livre est lou&#233;.</step>
+<step outcome="successful">Alors l&apos;adh&#233;rent a lou&#233; <parameter>1</parameter> livre.</step>
+</scenario>
+</story>
