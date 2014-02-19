@@ -19,6 +19,10 @@ public class AdherentRepositoryMock implements AdherentRepository {
         }
         return INSTANCE;
     }
+    
+    public static void disposeInstance() {
+        INSTANCE = null;
+    }
 
     private AdherentRepositoryMock() {
         adherents = new ArrayList<Adherent>();

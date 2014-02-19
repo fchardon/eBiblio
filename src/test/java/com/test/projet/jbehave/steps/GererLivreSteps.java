@@ -1,5 +1,7 @@
 package com.test.projet.jbehave.steps;
 
+import org.jbehave.core.annotations.AfterStory;
+import org.jbehave.core.annotations.BeforeStory;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -16,36 +18,26 @@ import com.test.projet.ebiblio.domain.tier.NoAdherent;
 
 public class GererLivreSteps {
 
-    LivreRepository livreRepository = LivreRepositoryMock.getInstance();
-    AdherentRepository adherentRepository = AdherentRepositoryMock.getInstance();
+    LivreRepository livreRepository;
+    AdherentRepository adherentRepository;
 
     Adherent adherent;
     Livre livre;
     
-    @Given("mon adhérent %noAdherent existe.")
-    public void givenMonAdherentExiste(String noAdherent) {
-        adherent = adherentRepository.findBy(new NoAdherent(noAdherent));
-    }
-
-    @Given("mon livre référence %reference est disponible.")
-    public void givenMonLivreReferenceEstDisponible(String reference) {
-        livre = livreRepository.findBy(new Reference(reference));
-        Assert.assertTrue("Mon livre n'est pas disponible", livre.estDisponible());
+    @AfterStory
+    public void clean() {
+    	LivreRepositoryMock.disposeInstance();
+    	AdherentRepositoryMock.disposeInstance();
+    	adherent = null;
+    	livre = null;
     }
     
-    @When("l'adhérent loue le livre.")
-    public void whenLadherentLoueLeLivre() {
-        adherent.louer(livre);
-    }
+    @BeforeStory
+    public void init() {
+    	livreRepository = LivreRepositoryMock.getInstance();
+        adherentRepository = AdherentRepositoryMock.getInstance();
 
-    @Then("le livre est loué.")
-    public void thenLeLivreEstLoue() {
-        Assert.assertTrue("Mon livre n'est pas loué", livre.estLoue());
     }
     
-    @Then("l'adhérent a loué %nombre livre.")
-    public void thenLadherentALoueLivres(int nombre) {
-     Assert.assertEquals("Le nombre de livre loué est incorrecte.", nombre, adherent.nombreDeLivreEnLocation());
-    }
-
+    
 }

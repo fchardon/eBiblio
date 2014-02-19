@@ -1,0 +1,9 @@
+Scénario I: Cas Nominal Rendre Un Livre
+
+User Story: En tant qu'adhérent, je veux rendre un livre.
+> rendre_un_livre.story
+
+Précondition:
+- L'adhérent de référence 123 existe dans le système
+- Le livre de référence aaa est loué par l'adhérent
+

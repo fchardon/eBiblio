@@ -38,11 +38,11 @@ public class eBiblioStoryEmbedder extends JUnitStories {
 
     private final CrossReference xref = new CrossReference();
 
-    private final String STORY_LOCATION = "com/test/projet/stories/**/*.story";
+    private final String STORY_LOCATION = "";//"com/test/projet/stories/**/*.story";
     
     public eBiblioStoryEmbedder() {
         configuredEmbedder().embedderControls().doGenerateViewAfterStories(true).doIgnoreFailureInStories(true)
-                .doIgnoreFailureInView(true).useThreads(2).useStoryTimeoutInSecs(60);
+                .doIgnoreFailureInView(true).useThreads(1).useStoryTimeoutInSecs(60);
         // Uncomment to set meta filter, which can also be set via Ant or Maven
         // configuredEmbedder().useMetaFilters(Arrays.asList("+theme parametrisation"));
     }

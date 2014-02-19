@@ -2,12 +2,12 @@ package com.test.projet.ebiblio.domain.livre;
 
 public enum Etat {
     /**
-     * Livre Disponible √† la location
+     * Livre Disponible à la location
      */
     DISPONIBLE,
     
     /**
-     * Livre lou√©, indisponible
+     * Livre loué, indisponible
      */
     LOUE,
     

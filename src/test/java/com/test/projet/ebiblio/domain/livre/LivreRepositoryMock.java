@@ -19,6 +19,10 @@ public class LivreRepositoryMock implements LivreRepository {
         return INSTANCE;
     }
     
+    public static void disposeInstance() {
+        INSTANCE = null;
+    }
+    
     private LivreRepositoryMock() {
         livres = new ArrayList<Livre>(); 
         livres.add(new Livre("Comment changer le monde ?",  "Yannick Grenzinger", new Reference("aaa")));
@@ -30,7 +34,7 @@ public class LivreRepositoryMock implements LivreRepository {
                 return livre;
             }
         }
-        throw new EntityNotFoundException("Le livre avec la r√©f√©rence {0} n'existe pas.", reference);
+        throw new EntityNotFoundException("Le livre avec la référence {0} n'existe pas.", reference);
     }
     
     public Livre findBy(Long id) {

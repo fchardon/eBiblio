@@ -28,8 +28,7 @@ public class Adherent implements Entity {
     ////////////////////////////////////////
     
     public void louer(Livre livre) {
-        livre.louer();
-        livreLoue.add(livre);
+    	// 
     }
     
 

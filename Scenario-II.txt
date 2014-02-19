@@ -1,0 +1,10 @@
+Scénario I: Cas d'exception Louer Un Livre que l'adherent à déja emprunter
+
+User Story: En tant qu'adhérent, je veux louer un livre déja loué.
+> louer_un_livre_deja_loue.story
+
+Précondition:
+- Mon adhérent de référence 123 existe dans le système
+- Mon livre de référence aaa existe dans le système
+- Mon livre de référence est déja loué
+

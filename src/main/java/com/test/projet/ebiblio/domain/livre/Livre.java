@@ -22,13 +22,7 @@ public class Livre implements Entity  {
     
     ////////////////////////////////////////
     
-    public void louer() {
-        if(etat.equals(Etat.DISPONIBLE)){
-            etat = Etat.LOUE;
-        } else {
-            throw new IncompatibleEtatException("Le livre est en état {}, il doit être en état {} pour être loué", etat, Etat.LOUE);
-        }
-    }
+    
     
     public boolean estDisponible() {
         return etat.equals(Etat.DISPONIBLE);

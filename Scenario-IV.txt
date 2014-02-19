@@ -1,0 +1,18 @@
+Scénario I: Cas Nominal Calculer le prix d'un livre
+
+User Story: En tant qu'adhérent, je veux calculer le prix d'un livre.
+> calculer_prix.story
+
+
+Règle:
+
+Categorie | Age | Prix
+A         | 0-12| 4€
+B         | 0-12| 6€
+C         | 0-12| 8€
+A         |13-18| 5€
+B         |13-18| 7€
+C         |13-18| 9€
+A         |19-99| 6€
+B         |19-99| 8€
+C         |19-99| 10€
