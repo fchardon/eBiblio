@@ -36,7 +36,6 @@ public class GererLivreSteps {
     public void init() {
     	livreRepository = LivreRepositoryMock.getInstance();
         adherentRepository = AdherentRepositoryMock.getInstance();
-
     }
     
     
