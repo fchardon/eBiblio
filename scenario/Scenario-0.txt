@@ -1,10 +1,10 @@
-Scénario 0: Calcul de prix (Prise en main de JBehave)
+Scenario 0: Calcul de prix (Prise en main de JBehave)
 
-User Story: En tant que gérant, je veux calculer la ristourne à l'adhérent
+User Story: En tant que g√©rant, je veux calculer la ristourne √† l'adh√©rent
 > calculer_prix.story
 
-Etant donné que mon adhérent loue pour 5€ de livre.
+Etant donn√© que mon adh√©rent loue pour 5‚Ç¨ de livre.
 Quand je fais un rabais de 10%.
-Alors l'adhérent paye 4,5€.
+Alors l'adh√©rent paye 4,5ÔøΩ.
 
 

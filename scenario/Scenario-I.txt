@@ -1,10 +1,10 @@
-Scénario I: Cas Nominal Louer Un Livre
+Sc√©nario I: Cas Nominal Louer Un Livre
 
-User Story: En tant qu'adhérent, je veux louer un livre.
+User Story: En tant qu'adh√©rent, je veux louer un livre.
 
 > louer_un_livre.story
 
-Précondition:
-- Mon adhérent de référence 123 existe dans le système
-- Mon livre de référence aaa existe dans le système et est disponible
+Pr√©condition:
+- Mon adh√©rent de r√©f√©rence 123 existe dans le syst√®me
+- Mon livre de r√©f√©rence aaa existe dans le syst√©me et est disponible
 

@@ -1,1 +1,1 @@
-Scénario: IV calculer le prix du livre
+Scenario: IV calculer le prix du livre

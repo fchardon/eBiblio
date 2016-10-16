@@ -1,6 +1,7 @@
 package com.test.projet.ebiblio.domain.tier;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
 import java.util.List;
 
 import com.test.projet.ebiblio.domain.Entity;
@@ -15,6 +16,7 @@ public class Adherent implements Entity {
     private NoAdherent noAdherent;
     
     private List<Livre> livreLoue;
+    private AdherentStatus status;
     
     public Adherent(String nom, String prenom, NoAdherent noAdherent) {
         super();
@@ -28,7 +30,28 @@ public class Adherent implements Entity {
     ////////////////////////////////////////
     
     public void louer(Livre livre) {
-    	// 
+        if(aLoueDesLivres()) {
+            devientActif();
+        }
+
+        if(livre.estDisponible()) {
+            ajouterLivre(livre);
+        }
+
+       // DomainEvent.event(AdherentALoueUnLivreEvent());
+
+    }
+
+    public void devientActif() {
+        this.status = AdherentStatus.ACTIF;
+    }
+
+    public boolean aLoueDesLivres() {
+        return livreLoue.isEmpty();
+    }
+
+    public boolean ajouterLivre(Livre livre) {
+        return livreLoue.add(livre);
     }
     
 
@@ -61,8 +84,11 @@ public class Adherent implements Entity {
     }
 
 
+    public Dictionary hasLivres() {
+        return null;
+    }
 
-    
-    
-    
+    public List<Livre> getLivres() {
+        return new ArrayList<Livre>();
+    }
 }

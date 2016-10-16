@@ -1,5 +1,5 @@
-Scénario: O Calculer rabais
+Scenario 0: Calcul de prix
 
-Etant donné que mon adhérent loue pour 5€ de livre.
-Quand je fais un rabais de 10%.
-Alors l'adhérent paye 4,5€.
+Etant donn√© que mon adh√©rent loue pour 5 ‚Ç¨ de livre.
+Quand je fais un rabais de 10 %.
+Alors l'adh√©rent paye 4,5 ‚Ç¨.

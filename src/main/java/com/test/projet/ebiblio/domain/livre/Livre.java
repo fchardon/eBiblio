@@ -1,7 +1,6 @@
 package com.test.projet.ebiblio.domain.livre;
 
 import com.test.projet.ebiblio.domain.Entity;
-import com.test.projet.ebiblio.domain.exception.IncompatibleEtatException;
 
 public class Livre implements Entity  {
     
@@ -60,15 +59,23 @@ public class Livre implements Entity  {
     }
 
 
-   
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
+    public void setAuteur(String auteur) {
+        this.auteur = auteur;
+    }
 
+    public void setReference(Reference reference) {
+        this.reference = reference;
+    }
 
+    public Etat getEtat() {
+        return etat;
+    }
 
-
-
-    
-    
-    
-    
+    public void setEtat(Etat etat) {
+        this.etat = etat;
+    }
 }

@@ -7,3 +7,9 @@ target/
 
 .settings/org.eclipse.m2e.core.prefs
 /bin
+
+.idea/.name
+
+.idea/compiler.xml
+
+.idea/copyright/profiles_settings.xml

@@ -1,16 +1,6 @@
 package com.test.projet.jbehave;
 
-import static org.jbehave.core.reporters.Format.CONSOLE;
-import static org.jbehave.core.reporters.Format.HTML;
-import static org.jbehave.core.reporters.Format.TXT;
-import static org.jbehave.core.reporters.Format.XML;
-
-import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.List;
-import java.util.Locale;
-import java.util.Properties;
-
+import com.test.projet.jbehave.steps.GererLivreSteps;
 import org.jbehave.core.Embeddable;
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.Keywords;
@@ -32,17 +22,27 @@ import org.jbehave.core.steps.InstanceStepsFactory;
 import org.jbehave.core.steps.ParameterConverters;
 import org.jbehave.core.steps.ParameterConverters.DateConverter;
 
-import com.test.projet.jbehave.steps.GererLivreSteps;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.Locale;
+import java.util.Properties;
+
+import static org.jbehave.core.reporters.Format.*;
 
 public class eBiblioStoryEmbedder extends JUnitStories {
 
+    public static final String VARIABLE = "&";
     private final CrossReference xref = new CrossReference();
 
-    private final String STORY_LOCATION = "";//"com/test/projet/stories/**/*.story";
-    
+    private final String STORY_LOCATION = "com/test/projet/stories/**/*.story";
+
     public eBiblioStoryEmbedder() {
-        configuredEmbedder().embedderControls().doGenerateViewAfterStories(true).doIgnoreFailureInStories(true)
-                .doIgnoreFailureInView(true).useThreads(1).useStoryTimeoutInSecs(60);
+        configuredEmbedder().embedderControls()
+                .doGenerateViewAfterStories(true)
+                .doIgnoreFailureInStories(true)
+                .doIgnoreFailureInView(true)
+                .useThreads(1).useStoryTimeoutInSecs(60);
         // Uncomment to set meta filter, which can also be set via Ant or Maven
         // configuredEmbedder().useMetaFilters(Arrays.asList("+theme parametrisation"));
     }
@@ -81,7 +81,7 @@ public class eBiblioStoryEmbedder extends JUnitStories {
                                 .withFailureTrace(true).withFailureTraceCompression(true).withCrossReference(xref))
                 .useParameterConverters(parameterConverters)
                 // use '%' instead of '$' to identify parameters
-                .useStepPatternParser(new RegexPrefixCapturingPatternParser("%")).useStepMonitor(xref.getStepMonitor());
+                .useStepPatternParser(new RegexPrefixCapturingPatternParser(VARIABLE)).useStepMonitor(xref.getStepMonitor());
     }
 
 
