@@ -8,8 +8,10 @@ target/
 .settings/org.eclipse.m2e.core.prefs
 /bin
 
+.idea/
 
+.idea/misc.xml
 
-.idea/compiler.xml
+.idea/workspace.xml
 
-.idea/copyright/profiles_settings.xml
+.idea/workspace.xml
