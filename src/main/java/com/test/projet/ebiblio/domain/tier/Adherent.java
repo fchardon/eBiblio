@@ -1,5 +1,6 @@
 package com.test.projet.ebiblio.domain.tier;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.List;
@@ -17,7 +18,8 @@ public class Adherent implements Entity {
     
     private List<Livre> livreLoue;
     private AdherentStatus status;
-    
+    private LocalDate dateAdhesion;
+
     public Adherent(String nom, String prenom, NoAdherent noAdherent) {
         super();
         this.nom = nom;
@@ -90,5 +92,13 @@ public class Adherent implements Entity {
 
     public List<Livre> getLivres() {
         return new ArrayList<Livre>();
+    }
+
+    public void setDateAdhesion(LocalDate dateAdhesion) {
+        this.dateAdhesion = dateAdhesion;
+    }
+
+    public LocalDate getDateAdhesion() {
+        return dateAdhesion;
     }
 }

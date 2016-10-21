@@ -1,11 +1,11 @@
 package com.test.projet.jbehave;
 
-import com.test.projet.jbehave.steps.GererLivreSteps;
+import com.test.projet.jbehave.steps.eBiblioSteps;
 import org.jbehave.core.Embeddable;
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.Keywords;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
-import org.jbehave.core.embedder.StoryControls;
+import org.jbehave.core.failures.FailingUponPendingStep;
 import org.jbehave.core.i18n.LocalizedKeywords;
 import org.jbehave.core.io.CodeLocations;
 import org.jbehave.core.io.LoadFromClasspath;
@@ -35,13 +35,13 @@ public class eBiblioStoryEmbedder extends JUnitStories {
     public static final String VARIABLE = "&";
     private final CrossReference xref = new CrossReference();
 
-    private final String STORY_LOCATION = "com/test/projet/stories/**/*.story";
+    private final String STORY_LOCATION = "com/test/projet/stories/**/s*.story";
 
     public eBiblioStoryEmbedder() {
         configuredEmbedder().embedderControls()
                 .doGenerateViewAfterStories(true)
-                .doIgnoreFailureInStories(true)
-                .doIgnoreFailureInView(true)
+                .doIgnoreFailureInStories(false)
+                .doIgnoreFailureInView(false)
                 .useThreads(1).useStoryTimeoutInSecs(60);
         // Uncomment to set meta filter, which can also be set via Ant or Maven
         // configuredEmbedder().useMetaFilters(Arrays.asList("+theme parametrisation"));
@@ -69,7 +69,7 @@ public class eBiblioStoryEmbedder extends JUnitStories {
 
         return new MostUsefulConfiguration()
                 .useKeywords(frKeywords)
-                .useStoryControls(new StoryControls().doDryRun(false).doSkipScenariosAfterFailure(false))
+                //.useStoryControls(new StoryControls().doDryRun(false).doSkipScenariosAfterFailure(false))
                 .useStoryLoader(new LoadFromClasspath(embeddableClass))
                 .useStoryParser(new RegexStoryParser(frKeywords))
                 .useStoryPathResolver(new UnderscoredCamelCaseResolver())
@@ -80,6 +80,7 @@ public class eBiblioStoryEmbedder extends JUnitStories {
                                 .withViewResources(viewResources).withFormats(CONSOLE, TXT, HTML, XML)
                                 .withFailureTrace(true).withFailureTraceCompression(true).withCrossReference(xref))
                 .useParameterConverters(parameterConverters)
+                .usePendingStepStrategy(new FailingUponPendingStep())
                 // use '%' instead of '$' to identify parameters
                 .useStepPatternParser(new RegexPrefixCapturingPatternParser(VARIABLE)).useStepMonitor(xref.getStepMonitor());
     }
@@ -94,7 +95,7 @@ public class eBiblioStoryEmbedder extends JUnitStories {
   
     @Override
     public InjectableStepsFactory stepsFactory() {
-        return new InstanceStepsFactory(configuration(), new GererLivreSteps());
+        return new InstanceStepsFactory(configuration(), new eBiblioSteps());
     }
 
 }
