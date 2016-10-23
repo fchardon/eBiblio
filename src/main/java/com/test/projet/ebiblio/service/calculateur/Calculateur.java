@@ -27,7 +27,7 @@ public class Calculateur {
      * @return
      */
     public Remise calculMontantRemise(LocalDate dateDuJour, LocalDate dateAdhesion){
-        long year = ChronoUnit.YEARS.between(dateDuJour, dateAdhesion);
+        long year = ChronoUnit.YEARS.between(dateAdhesion, dateDuJour);
         return calculMontantRemise(year);
     }
 
@@ -40,18 +40,19 @@ public class Calculateur {
      * @return la {@link Remise}
      */
     public Remise calculMontantRemise(Long annee){
-        Integer anneeLaPlusProche = null;
+        System.out.println("calculMontantRemise:"+annee);
+
+        Integer anneeLaPlusProche = 0;
         // Supprimer le stream
-        for (Integer anneeRemise: remise.keySet()
-             ) {
-            anneeLaPlusProche = anneeRemise;
-            if(annee > annee.intValue()) {
+        for (Integer anneeRemise: remise.keySet()) {
+            System.out.println(anneeRemise+":"+anneeLaPlusProche);
+            if(anneeRemise > annee.intValue()) {
                break;
             }
+            anneeLaPlusProche = anneeRemise;
         }
-       /* Integer integer = remise.keySet().stream()
-                .filter(integer1 -> integer1 > year.intValue())
-                .max((p1, p2) -> p1.compareTo(p2)).get();*/
+
+
         Integer remise = this.remise.get(anneeLaPlusProche);
         return new Remise(new BigDecimal(remise));
     }
