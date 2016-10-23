@@ -1,6 +1,6 @@
 
 Etant donné les Histoires:
-com/test/projet/stories/gerer_livres/regles/s_regle_anciennete.story
+com/test/projet/stories/gerer_livres/regles/regles_anciennete.story
 
 Scénario: Calcul de prix en fonction de l'ancienneté
 

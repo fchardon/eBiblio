@@ -32,12 +32,27 @@ public class Calculateur {
     }
 
 
-    public Remise calculMontantRemise(Long year){
-        year.intValue();
-        Integer integer = remise.keySet().stream()
+    /**
+     * Calculer la remise correspondant à l'année inférieur la plus proche.<br/>
+     * Si {@code annee} = 5 et qu'il existe des remises pour 1, 4 et 6 ans<br/>
+     * Alors l'année inférieur la plus proche sera 4 ans.
+     * @param annee -
+     * @return la {@link Remise}
+     */
+    public Remise calculMontantRemise(Long annee){
+        Integer anneeLaPlusProche = null;
+        // Supprimer le stream
+        for (Integer anneeRemise: remise.keySet()
+             ) {
+            anneeLaPlusProche = anneeRemise;
+            if(annee > annee.intValue()) {
+               break;
+            }
+        }
+       /* Integer integer = remise.keySet().stream()
                 .filter(integer1 -> integer1 > year.intValue())
-                .max((p1, p2) -> p1.compareTo(p2)).get();
-        Integer remise = this.remise.get(integer);
+                .max((p1, p2) -> p1.compareTo(p2)).get();*/
+        Integer remise = this.remise.get(anneeLaPlusProche);
         return new Remise(new BigDecimal(remise));
     }
 

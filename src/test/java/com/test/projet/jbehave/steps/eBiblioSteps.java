@@ -100,7 +100,7 @@ public class eBiblioSteps {
     }
 
     private Map<Integer, Integer> convertRegles(ExamplesTable table) {
-        Map<Integer,Integer> regles = new HashMap<>();
+        Map<Integer,Integer> regles = new HashMap<Integer,Integer>();
         for (Map<String,String> row : table.getRows()) {
             Integer age = Integer.valueOf(row.get("anciennete"));
             Integer tx = Integer.valueOf(row.get("taux"));
