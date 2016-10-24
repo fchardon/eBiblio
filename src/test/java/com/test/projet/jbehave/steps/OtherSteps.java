@@ -1,21 +1,5 @@
 package com.test.projet.jbehave.steps;
 
-import com.test.projet.ebiblio.domain.livre.Livre;
-import com.test.projet.ebiblio.domain.livre.LivreRepository;
-import com.test.projet.ebiblio.domain.other.*;
-import com.test.projet.ebiblio.domain.tier.Adherent;
-import com.test.projet.ebiblio.domain.tier.AdherentRepository;
-import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Pending;
-import org.jbehave.core.annotations.Then;
-import org.jbehave.core.annotations.When;
-import org.junit.Assert;
-
-import java.time.LocalDate;
-
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
-
 public class OtherSteps {
 
   /*

@@ -1,8 +1,9 @@
 package com.test.projet.ebiblio.service.calculateur;
 
+import org.joda.time.LocalDate;
+import org.joda.time.Years;
+
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,8 +28,9 @@ public class Calculateur {
      * @return
      */
     public Remise calculMontantRemise(LocalDate dateDuJour, LocalDate dateAdhesion){
-        long year = ChronoUnit.YEARS.between(dateAdhesion, dateDuJour);
-        return calculMontantRemise(year);
+        Years years = Years.yearsBetween(dateAdhesion, dateDuJour);
+        //long year = ChronoUnit.YEARS.between(dateAdhesion, dateDuJour);
+        return calculMontantRemise(years.getYears());
     }
 
 
@@ -39,13 +41,13 @@ public class Calculateur {
      * @param annee -
      * @return la {@link Remise}
      */
-    public Remise calculMontantRemise(Long annee){
-        System.out.println("calculMontantRemise:"+annee);
+    public Remise calculMontantRemise(Integer annee){
+        //System.out.println("calculMontantRemise:"+annee);
 
         Integer anneeLaPlusProche = 0;
         // Supprimer le stream
         for (Integer anneeRemise: remise.keySet()) {
-            System.out.println(anneeRemise+":"+anneeLaPlusProche);
+            //System.out.println(anneeRemise+":"+anneeLaPlusProche);
             if(anneeRemise > annee.intValue()) {
                break;
             }

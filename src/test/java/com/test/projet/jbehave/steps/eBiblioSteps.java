@@ -9,11 +9,13 @@ import com.test.projet.ebiblio.service.calculateur.Calculateur;
 import com.test.projet.ebiblio.service.calculateur.Remise;
 import org.jbehave.core.annotations.*;
 import org.jbehave.core.model.ExamplesTable;
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.junit.Assert;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,9 +56,11 @@ public class eBiblioSteps {
 
     @AsParameterConverter
     public LocalDate toLocalDate(String name){
-        final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        return LocalDate.parse(name, formatter);
-
+        //final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        //return LocalDate.parse(name, formatter);
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy/MM/dd");
+        DateTime dateTime = formatter.parseDateTime(name);
+        return dateTime.toLocalDate();
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////

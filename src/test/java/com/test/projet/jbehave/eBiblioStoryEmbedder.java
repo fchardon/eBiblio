@@ -20,10 +20,8 @@ import org.jbehave.core.reporters.StoryReporterBuilder;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
 import org.jbehave.core.steps.ParameterConverters;
-import org.jbehave.core.steps.ParameterConverters.DateConverter;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
@@ -61,11 +59,13 @@ public class eBiblioStoryEmbedder extends JUnitStories {
         // ExamplesTableFactory examplesTableFactory = new ExamplesTableFactory(new LocalizedKeywords(Locale.FRENCH),
         // new LoadFromClasspath(embeddableClass), parameterConverters);
         // add custom converters
-        parameterConverters.addConverters(new DateConverter(new SimpleDateFormat("yyyy-MM-dd"))/*
+        //parameterConverters.addConverters(new DateConverter(new SimpleDateFormat("yyyy-MM-dd")))
+                /*
                                                                                                 * , new
                                                                                                 * ExamplesTableConverter
                                                                                                 * (examplesTableFactory)
-                                                                                                */);
+                                                                                                */
+        ;
 
         return new MostUsefulConfiguration()
                 .useKeywords(frKeywords)
