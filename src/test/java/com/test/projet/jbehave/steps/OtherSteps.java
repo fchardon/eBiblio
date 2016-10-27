@@ -25,7 +25,7 @@ public class OtherSteps {
         Calculateur calculateur = system.trouverCalculateurPour(canton);
         Employeur employeur = system.trouverEmployeur(ayantDroit, nomEmployeur, dateEmbauche);
         Montant montant = calculateur.calculerDroitMensuel(ayantDroit, enfant, employeur, periode);
-        DecisionOctroi decisionOctroi = generateurDecision.genererDecisionOctroi(montant, dateEmbauche, system.dateDuJour());
+        DecisionOctroi decisionOctroi = generateurDecision.genererDecisionOctroi(montant, dateEmbauche, system.dateOfTheDay());
         system.enregistrerDecision(decisionOctroi);
 
     }
@@ -57,7 +57,7 @@ public class OtherSteps {
 
         }
 
-        public LocalDate dateDuJour() {
+        public LocalDate dateOfTheDay() {
             return new LocalDate();
         }
 

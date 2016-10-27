@@ -1,7 +1,9 @@
 package com.test.projet.jbehave.steps;
 
 import com.test.projet.ebiblio.domain.adherent.AdherentRepositoryMock;
-import com.test.projet.ebiblio.domain.livre.*;
+import com.test.projet.ebiblio.domain.livre.Livre;
+import com.test.projet.ebiblio.domain.livre.LivreRepository;
+import com.test.projet.ebiblio.domain.livre.LivreRepositoryMock;
 import com.test.projet.ebiblio.domain.tier.Adherent;
 import com.test.projet.ebiblio.domain.tier.AdherentRepository;
 import com.test.projet.ebiblio.domain.tier.NoAdherent;
@@ -19,10 +21,10 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.Matchers.equalTo;
 
 @UsingSteps
-public class eBiblioSteps {
+public class eBiblioEnSteps {
 
     LivreRepository livreRepository;
     AdherentRepository adherentRepository;
@@ -32,7 +34,7 @@ public class eBiblioSteps {
     Adherent adherent;
     Livre livre;
 
-    LocalDate dateDuJour;
+    LocalDate dateOfTheDay;
     private BigDecimal prixCalcule;
 
     @AfterStory
@@ -45,6 +47,7 @@ public class eBiblioSteps {
     
     @BeforeStory
     public void init() {
+        this.calculateur = new Calculateur(new HashMap<Integer,Integer>());
     	livreRepository = LivreRepositoryMock.getInstance();
         adherentRepository = AdherentRepositoryMock.getInstance();
     }
@@ -67,47 +70,31 @@ public class eBiblioSteps {
     // GIVEN
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    @Given("nous sommes le &dateOfTheDay.")
-    public void initDateDuJour(LocalDate dateDuJour) {
-        this.dateDuJour = dateDuJour;
+    @Given("we are the $dateOfTheDay.")
+    public void initDateOfTheDay(LocalDate dateDuJour) {
+        this.dateOfTheDay = dateDuJour;
     }
 
-    @Given("mon adhérent est client depuis le &dateAdhesion.")
-    public void initAdherentDate(LocalDate dateAdhesion) {
-        adherent.setDateAdhesion(dateAdhesion);
+    @Given("the member $no exists.")
+    public void loadMember(String no) {
+            adherent = adherentRepository.findBy(new NoAdherent(no));
     }
 
-    @Given("mon adhérent loue pour &montant € de livre.")
-    public void monAdherentLoue(Long montant) {
-
+    @Given("the customer is member since $beginDate.")
+    public void initMemberBegin(LocalDate beginDate) {
+        adherent.setDateAdhesion(beginDate);
     }
 
-    @Given("{mon |l'}adhérent &no existe.")
-    public void loadAdherent(String no) {
-        adherent = adherentRepository.findBy(new NoAdherent(no));
+    @Given("the member has <year> of tenure, the rate apply is <percent>%.")
+    public void applySeniorityRule(@Named("year") Integer year, @Named("percent") Integer percent) {
+        calculateur.addRule(year, percent);
     }
 
-    @Given("mon livre de reference &no exist.")
-    public void monLivreEstDisponible(String no) {
-        livre = livreRepository.findBy(new Reference(no));
-    }
-
-    @Given("mon livre de reference &ref est disponible.")
-    public void checkMonLivreEstDisponible(String ref) {
-        livre = livreRepository.findBy(new Reference(ref));
-        livre.getEtat().equals(Etat.DISPONIBLE);
-    }
-
-    @Given("les règles d'ancienneté sont :\n&regles")
-    public void definirRegleCalculateur(ExamplesTable regles) {
-        this.calculateur = new Calculateur(convertRegles(regles));
-    }
-
-    private Map<Integer, Integer> convertRegles(ExamplesTable table) {
+    private Map<Integer, Integer> convertRules(ExamplesTable table) {
         Map<Integer,Integer> regles = new HashMap<Integer,Integer>();
         for (Map<String,String> row : table.getRows()) {
-            Integer age = Integer.valueOf(row.get("anciennete"));
-            Integer tx = Integer.valueOf(row.get("taux"));
+            Integer age = Integer.valueOf(row.get("seniority"));
+            Integer tx = Integer.valueOf(row.get("rate"));
             regles.put(age, tx);
         }
         return regles;
@@ -117,22 +104,10 @@ public class eBiblioSteps {
     // WHEN
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-    @When("je fais un rabais de &pourcentage%.")
-    public void checkRabais(Long pourcentage) {
-        // EN SUSPENS
-    }
-
-    @When("l'adhérent loue le livre.")
-    public void adherentLoueUnLivre() {
-        adherent.louer(livre);
-        adherentRepository.store(adherent);
-    }
-
-    @When("l'adhérent emprunte un livre à &prix €.")
-    public void emprunterLivre(BigDecimal prix) {
-        Remise remise = calculateur.calculMontantRemise(this.dateDuJour, adherent.getDateAdhesion());
-        this.prixCalcule = remise.calculPrix(prix);
+    @When("the member rents a book at $price €.")
+    public void rentBook(BigDecimal price) {
+        Remise remise = calculateur.calculMontantRemise(this.dateOfTheDay, adherent.getDateAdhesion());
+        this.prixCalcule = remise.calculPrix(price);
     }
 
 
@@ -140,28 +115,9 @@ public class eBiblioSteps {
     // THEN
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-    @Then("l'adhérent paye &prix €.")
-    public void adherentPaye(BigDecimal prix) {
-        Assert.assertThat(this.prixCalcule, equalTo(prix));
+    @Then("the member pays $price €.")
+    public void caculMemberPrice(BigDecimal price) {
+        Assert.assertThat("The price expected is not correct", this.prixCalcule, equalTo(price));
     }
 
-    @Then("le livre est loué.")
-    public void leLivreEstLoue() {
-        livre.estLoue();
-    }
-
-    @Then("l'adhérent a loué &nb livre.")
-    public void checkAdherentLoueUnLivre(int nb) {
-
-    }
-
-
-
-
-
-
-
-    
-    
 }

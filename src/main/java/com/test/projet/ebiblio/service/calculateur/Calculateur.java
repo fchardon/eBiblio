@@ -54,9 +54,15 @@ public class Calculateur {
             anneeLaPlusProche = anneeRemise;
         }
 
+        if(!this.remise.containsKey(anneeLaPlusProche)) {
+            throw new RuntimeException("There is no discount for the tenure "+anneeLaPlusProche+" year");
+        }
 
         Integer remise = this.remise.get(anneeLaPlusProche);
         return new Remise(new BigDecimal(remise));
     }
 
+    public void addRule(Integer year, Integer percent) {
+        remise.put(year, percent);
+    }
 }

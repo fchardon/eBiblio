@@ -1,6 +1,6 @@
 package com.test.projet.jbehave;
 
-import com.test.projet.jbehave.steps.eBiblioSteps;
+import com.test.projet.jbehave.steps.eBiblioEnSteps;
 import org.jbehave.core.Embeddable;
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.Keywords;
@@ -30,10 +30,11 @@ import static org.jbehave.core.reporters.Format.*;
 
 public class eBiblioStoryEmbedder extends JUnitStories {
 
-    public static final String VARIABLE = "&";
+    //public static final String VARIABLE = "&";
+    public static final String VARIABLE = "$";
     private final CrossReference xref = new CrossReference();
 
-    private final String STORY_LOCATION = "com/test/projet/stories/**/s*.story";
+    private final String STORY_LOCATION = "com/test/projet/stories/**/s_*.story";
 
     public eBiblioStoryEmbedder() {
         configuredEmbedder().embedderControls()
@@ -47,7 +48,8 @@ public class eBiblioStoryEmbedder extends JUnitStories {
 
     @Override
     public Configuration configuration() {
-        Keywords frKeywords = new LocalizedKeywords(Locale.FRENCH);
+        //Keywords frKeywords = new LocalizedKeywords(Locale.FRENCH);
+        Keywords frKeywords = new LocalizedKeywords(Locale.ENGLISH);
         Class<? extends Embeddable> embeddableClass = this.getClass();
         URL codeLocation = CodeLocations.codeLocationFromClass(embeddableClass);
         Properties viewResources = new Properties();
@@ -95,7 +97,7 @@ public class eBiblioStoryEmbedder extends JUnitStories {
   
     @Override
     public InjectableStepsFactory stepsFactory() {
-        return new InstanceStepsFactory(configuration(), new eBiblioSteps());
+        return new InstanceStepsFactory(configuration(), new eBiblioEnSteps());
     }
 
 }
