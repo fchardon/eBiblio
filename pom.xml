@@ -110,7 +110,7 @@
             <configuration>
               <scope>test</scope>
               <includes>
-                <include>**/**eBiblioStoryEmbedder.java</include>
+                <include>**/**eBiblioEnStoryEmbedder.java</include>
               </includes>
               <systemProperties>
                 <property>
