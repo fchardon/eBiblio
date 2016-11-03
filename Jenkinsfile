@@ -12,7 +12,7 @@ node {
       sh "${mvnHome}/bin/mvn -B verify"
    }
 
-   stage('Deployed to Server') {'
+   stage('Deployed to Server') {
       echo 'Deployed to Production'
    }
 
