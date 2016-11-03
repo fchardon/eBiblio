@@ -6,7 +6,7 @@ node {
         sh "${mvnHome}/bin/mvn -B test"
     }
 
-   stage('Run acceptance tests') {'
+   stage('Run acceptance tests') {
       echo 'Running acceptance tests'
       def mvnHome = tool 'maven-3.3.9'
       sh "${mvnHome}/bin/mvn -B verify"
