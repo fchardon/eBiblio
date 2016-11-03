@@ -13,7 +13,7 @@ node {
    }
 
    stage('Deployed to Server') {
-      echo 'Deployed to Production'
+      echo 'Deployed to Production 2'
    }
 
 }
