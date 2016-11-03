@@ -203,6 +203,7 @@
         <option value="$PROJECT_DIR$/src/test/resources/com/test/projet/stories/rent_books/book_price_calculation/c_seniority_discount_calculator.story" />
         <option value="$PROJECT_DIR$/src/test/resources/com/test/projet/stories/rent_books/rules/seniorities_rules.story" />
         <option value="$PROJECT_DIR$/Readme.txt" />
+        <option value="$PROJECT_DIR$/Jenkinsfile" />
       </list>
     </option>
   </component>
@@ -961,7 +962,7 @@
       <workItem from="1477302199042" duration="1941000" />
       <workItem from="1477496722515" duration="5932000" />
       <workItem from="1477731152186" duration="182000" />
-      <workItem from="1478208560194" duration="403000" />
+      <workItem from="1478208560194" duration="469000" />
     </task>
     <task id="LOCAL-00001" summary="Update JBehave Test">
       <created>1476603594327</created>
@@ -984,7 +985,14 @@
       <option name="project" value="LOCAL" />
       <updated>1478209549534</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Update Jenkins File">
+      <created>1478210003488</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1478210003488</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1020,7 +1028,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32836000" />
+    <option name="totallyTimeSpent" value="32902000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1071,7 +1079,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update JBehave Test" />
     <MESSAGE value="Change Readme.txt File" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change Readme.txt File" />
+    <MESSAGE value="Update Jenkins File" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Jenkins File" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
