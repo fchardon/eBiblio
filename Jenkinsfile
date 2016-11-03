@@ -1,6 +1,8 @@
 node {
-   stage 'Checkout the source code '
+   stage 'Build PRoject '
    echo "Source code checked"
+   sh 'mvn clean test'
+   
    stage 'Run unit tests'
    echo 'Running Unit tests'
    stage 'Run acceptance tests'
