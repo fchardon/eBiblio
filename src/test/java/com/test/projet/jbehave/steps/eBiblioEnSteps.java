@@ -85,7 +85,7 @@ public class eBiblioEnSteps {
         adherent.setDateAdhesion(beginDate);
     }
 
-    @Given("the member has <year> of tenure, the rate apply is <percent>%.")
+    @Given("the member has <year> of tenure, the rate applied is <percent>%.")
     public void applySeniorityRule(@Named("year") Integer year, @Named("percent") Integer percent) {
         calculateur.addRule(year, percent);
     }
