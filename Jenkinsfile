@@ -1,8 +1,9 @@
 node {
    stage 'Build PRoject '
    echo "Source code checked"
-   sh 'mvn clean test'
-   
+   def mvnHome = tool 'M3'
+   sh "${mvnHome}/bin/mvn -B verify"
+
    stage 'Run unit tests'
    echo 'Running Unit tests'
    stage 'Run acceptance tests'
