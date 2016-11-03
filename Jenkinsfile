@@ -2,7 +2,6 @@ node {
    
 
    stage('Build and Test') {
-        properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('H/1 * * * *')])])
         checkout scm
         env.PATH = "${tool 'maven-3.3.9'}/bin:${env.PATH}"
         sh "${mvnHome}/bin/mvn -B test"
