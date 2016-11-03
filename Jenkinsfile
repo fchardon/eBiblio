@@ -1,13 +1,14 @@
 node {
-   stage 'Build PRoject '
-   echo "Source code checked"
-   checkout scm
    
-   stage 'Run unit tests'
-   echo 'Running Unit tests'
-   def mvnHome = tool 'maven-3.3.9'
-   sh "${mvnHome}/bin/mvn -B test"
 
+   stage('Build and Test') {
+        properties([pipelineTriggers([[$class: 'GitHubPushTrigger'], pollSCM('H/1 * * * *')])])
+        checkout scm
+        env.PATH = "${tool 'maven-3.3.9'}/bin:${env.PATH}"
+        sh "${mvnHome}/bin/mvn -B test"
+    }
+
+   
 
    stage 'Run acceptance tests'
    echo 'Running acceptance tests'
