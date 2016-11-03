@@ -1,7 +1,7 @@
 node {
    stage 'Build PRoject '
    echo "Source code checked"
-   def mvnHome = tool 'M3'
+   def mvnHome = tool 'maven-3.3.9'
    sh "${mvnHome}/bin/mvn -B verify"
 
    stage 'Run unit tests'
